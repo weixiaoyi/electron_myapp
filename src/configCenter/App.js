@@ -32,12 +32,12 @@ class App {
 
   createWindow() {
     this.window = new Window({
-      width: 1900,
+      width: 600,
       height: 900,
-      url: `file://${__dirname}/../distSource/index.html`
+      url: `http://localhost:8000/#/`
+      //url: `file://${__dirname}/../distSource/index.html`
     })
   }
-
 }
 
 
