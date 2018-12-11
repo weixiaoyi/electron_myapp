@@ -5,7 +5,7 @@
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --debug",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
