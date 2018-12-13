@@ -13,13 +13,30 @@
   "author": "weixiaoyi",
   "license": "MIT",
   "build": {
-    "appId": "2008",
+    "appId": "myapp",
     "mac": {
-      "category": "wei"
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
     }
   },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "weixiaoyi",
+      "url": "electron_myapp"
+    }
+  ],
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.0.6"
   },
   "devDependencies": {
     "electron": "^3.0.11",

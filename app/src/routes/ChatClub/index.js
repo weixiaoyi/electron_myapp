@@ -73,7 +73,7 @@ class ChatClub extends Mixin.Custom {
         <Link to="/chatclubs" >chatclubs</Link >
         <div >当前chatcl------------</div >
         <div className={styles.chatClub} >
-          {this.state.result ? this.state.result : '没有数据hahah'}
+          {this.state.result ? this.state.result : '没有数据是啥'}
         </div >
         <div >
           apple：{this.state.apple}
