@@ -1,9 +1,9 @@
-import _ from 'lodash'
-import moment from 'moment'
-import store from 'store'
-import { fromJS, is } from 'immutable'
-import { forkJoin, from, of, Subject, } from 'rxjs'
-import { map, race, retry, catchError, tap, take, share, debounceTime, takeWhile } from 'rxjs/operators'
+import _ from 'lodash';
+import moment from 'moment';
+import store from 'store';
+import { fromJS, is } from 'immutable';
+import { forkJoin, from, of, Subject } from 'rxjs';
+import { map, race, retry, catchError, tap, take, share, debounceTime, takeWhile } from 'rxjs/operators';
 
 export const lodash_helper = {
   invert: _.invert,
@@ -47,8 +47,7 @@ export const lodash_helper = {
   cloneDeep: _.cloneDeep,
   uniqueId: _.uniqueId,
   isFunction: _.isFunction,
-  isInteger: _.isInteger
-}
+};
 
 export const Rxjs_helper = {
   takeWhile,
@@ -63,56 +62,48 @@ export const Rxjs_helper = {
   tap,
   of,
   Subject,
-  share
-}
+  share,
+};
 
 export const localSave = {
-  get: (key) => {
-    return store.get(key)
+  get: key => {
+    return store.get(key);
   },
   set: (key, value) => {
-    store.set(key, value)
+    store.set(key, value);
   },
-  remove: (key) => {
-    store.remove(key)
+  remove: key => {
+    store.remove(key);
   },
   clearAll: () => {
-    store.clearAll()
+    store.clearAll();
   },
   getUserInfo: () => {
-    return store.get('userInfo')
-  }
-}
+    return store.get('userInfo');
+  },
+};
 
 export const immutable = {
   fromJS,
-  is
-}
+  is,
+};
 
 export const moment_helper = {
   format: (time = Date.now(), format = 'YYYY-MM-DD') => {
-    return moment(time)
-      .format(format)
+    return moment(time).format(format);
   },
   formatHMS: (time = Date.now()) => {
-    return moment(time)
-      .format('HH:mm:ss')
+    return moment(time).format('HH:mm:ss');
   },
-  formatHMSFromSeconds: (time) => {
-    return moment_helper.formatHMS(String(time)
-      .split('.')[0] * 1000)
+  formatHMSFromSeconds: time => {
+    return moment_helper.formatHMS(String(time).split('.')[0] * 1000);
   },
   getdays: (startTime, endTime, isInclude = false) => {
-    const days = Math.ceil(moment.duration(endTime - startTime)
-      .asDays())
-    const daysArray = []
+    const days = Math.ceil(moment.duration(endTime - startTime).asDays());
+    const daysArray = [];
     for (let i = 0; i < days - 2; i++) {
-      daysArray.push(startTime + (i + 1) * 1 * 24 * 60 * 60 * 1000)
+      daysArray.push(startTime + (i + 1) * 1 * 24 * 60 * 60 * 1000);
     }
-    return daysArray
-  }
-}
-
-
-
-
+    return daysArray;
+  },
+};

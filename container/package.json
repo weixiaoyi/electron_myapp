@@ -5,7 +5,7 @@
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
-    "start": "nodemon --watch src/**/* --exec electron . --debug",
+    "start": "nodemon --watch ./src/**/* --exec electron . --debug",
     "pack": "electron-builder --dir",
     "dist": "rimraf dist&&electron-builder"
   },
