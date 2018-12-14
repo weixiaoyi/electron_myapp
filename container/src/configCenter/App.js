@@ -1,7 +1,6 @@
 const Window = require('./Window')
 const { app, } = require('electron')
 
-const { autoUpdater } = require("electron-updater")
 
 class App {
   constructor() {
@@ -17,7 +16,6 @@ class App {
 
     this.app.on('ready', () => {
       this.createWindow()
-      autoUpdater.checkForUpdatesAndNotify()
     });
 
     this.app.on('window-all-closed', () => {

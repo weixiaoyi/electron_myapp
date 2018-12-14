@@ -1,39 +1,32 @@
 {
   "name": "app",
   "productName": "app",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
     "start": "nodemon --watch src/**/* --exec electron . --debug",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "rimraf dist&&electron-builder"
   },
   "keywords": [],
   "author": "weixiaoyi",
   "license": "MIT",
   "build": {
     "appId": "myapp",
-    "mac": {
-      "target": [
-        "dmg",
-        "zip"
-      ]
-    },
     "win": {
       "target": [
         "nsis",
         "zip"
       ]
-    }
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://localhost:7000/electron_update/"
+      }
+    ]
   },
-  "publish": [
-    {
-      "provider": "github",
-      "owner": "weixiaoyi",
-      "url": "electron_myapp"
-    }
-  ],
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
     "electron-updater": "^4.0.6"
@@ -41,6 +34,7 @@
   "devDependencies": {
     "electron": "^3.0.11",
     "electron-builder": "^20.38.3",
-    "nodemon": "^1.18.8"
+    "nodemon": "^1.18.8",
+    "rimraf": "^2.6.2"
   }
 }

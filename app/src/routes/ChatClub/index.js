@@ -25,13 +25,10 @@ class ChatClub extends Mixin.Custom {
       const electron = window.require('electron');
       const {ipcRenderer} = electron;
       ipcRenderer.on('asynchronous-reply', (event, arg) => {
-        console.log(arg,'=========================') // prints "pong"
+        console.log(arg,'=========================')
       })
       ipcRenderer.send('me', 'ping')
     }
-
-    // console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
-
   }
 
 
@@ -72,6 +69,13 @@ class ChatClub extends Mixin.Custom {
       <div >
         <Link to="/chatclubs" >chatclubs</Link >
         <div >当前chatcl------------</div >
+        <button onClick={()=>{
+          if(window.require){
+            const electron = window.require('electron');
+            const {ipcRenderer} = electron;
+            ipcRenderer.send('update', '更新')
+          }
+        }}>更新</button>
         <div className={styles.chatClub} >
           {this.state.result ? this.state.result : '没有数据是啥'}
         </div >
