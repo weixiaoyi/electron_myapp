@@ -7,7 +7,7 @@ ipcMain.on('me', (event, arg) => {
 
 ipcMain.on('update', (event, arg) => {
   console.log(arg,'========')
-  autoUpdater.on('update-downloaded', function (event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
+  autoUpdater.on('update-downloaded', function () {
     autoUpdater.quitAndInstall();
   })
 
