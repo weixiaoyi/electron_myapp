@@ -1,72 +1,73 @@
-import React, { Component } from 'react'
-import { Mixin } from '@components'
-import { Inject, R, createSubject } from '@utils'
-import * as styles from './index.less'
+import React, { Component } from 'react';
+import { Mixin } from '../../components';
+import { Inject, R, createSubject } from '../../utils';
+import * as styles from './index.less';
 
-const {
-  debounceTime, takeWhile
-} = R
+const { debounceTime, takeWhile } = R;
 
-export default @Inject(({ homeStore: model }) => ({ model }))
-
-class View extends Component {
+@Inject(({ homeStore: model }) => ({ model }))
+class Home extends Component {
   state = {
-    val: ''
-  }
+    val: '',
+  };
 
   startInit = () => {
-    this.changeExample()
-  }
+    this.changeExample();
+  };
 
-  changeExample = (v) => {
-    const { model: { dispatch } } = this.props
+  changeExample = v => {
+    const {
+      model: { dispatch },
+    } = this.props;
     if (this.changeExample$) {
-      return this.changeExample$.next(v)
+      return this.changeExample$.next(v);
     }
-    this.changeExample$ = createSubject()
-    this.changeExample$.pipe(
-      debounceTime(500),
-      takeWhile(v => this._isMounted)
-    )
-      .subscribe(v => {
-          dispatch({
-            type: 'getExample1',
-            payload: v
-          })
-        }
+    this.changeExample$ = createSubject();
+    this.changeExample$
+      .pipe(
+        debounceTime(500),
+        takeWhile(v => this._isMounted)
       )
-  }
+      .subscribe(v => {
+        dispatch({
+          type: 'getExample1',
+          payload: v,
+        });
+      });
+  };
 
   render() {
-    const { changeExample } = this
-    const { val } = this.state
-    const { model: { todos, loading } } = this.props
+    const { changeExample } = this;
+    const { val } = this.state;
+    const {
+      model: { todos, loading },
+    } = this.props;
     return (
-      <Mixin.Parent that={this} >
-        {
-          loading.getExample1 ? <div >loading...</div > : null
-        }
+      <Mixin.Parent that={this}>
+        {loading.getExample1 ? <div>loading...</div> : null}
 
-        <div className={styles.home} >
-          {
-            todos.map((item, index) => (
-              <div key={index} >
-                {item.name}
-              </div >
-            ))
-          }
-          <input value={val} onChange={(e) => {
-            const value = e.target.value
-            this.changeState({
-              val: value
-            }, () => {
-              changeExample(value)
-            })
-          }} />
-        </div >
-      </Mixin.Parent >
-    )
+        <div className={styles.home}>
+          {todos.map((item, index) => (
+            <div key={index}>{item.name}</div>
+          ))}
+          <input
+            value={val}
+            onChange={e => {
+              const value = e.target.value;
+              this.changeState(
+                {
+                  val: value,
+                },
+                () => {
+                  changeExample(value);
+                }
+              );
+            }}
+          />
+        </div>
+      </Mixin.Parent>
+    );
   }
 }
 
-
+export default Home;

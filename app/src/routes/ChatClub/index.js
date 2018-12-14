@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Mixin } from '@components';
-import { _, Inject } from '@utils';
-import ws2 from '@services/socketClient2';
-import * as styles from './index.module.less';
-import { filter, map } from 'rxjs/operators';
+import React from 'react';
+import { Mixin } from '../../components';
+import { Inject } from '../../utils';
+import ws2 from '../../services/socketClient2';
+import * as styles from './index.less';
+import { filter } from 'rxjs/operators';
 
-export default
 @Inject(({ chatClub: model }) => ({ model }))
 class ChatClub extends Mixin.Custom {
   state = {
@@ -17,9 +15,6 @@ class ChatClub extends Mixin.Custom {
   };
 
   startInit = () => {
-    const {
-      model: { dispatch },
-    } = this.props;
     this.getPriceWs2();
     if (window.require) {
       const electron = window.require('electron');
@@ -66,8 +61,6 @@ class ChatClub extends Mixin.Custom {
   render() {
     return (
       <div>
-        <Link to="/chatclubs">chatclubs</Link>
-        <div>当前chatcl------------</div>
         <button
           onClick={() => {
             if (window.require) {
@@ -88,3 +81,5 @@ class ChatClub extends Mixin.Custom {
     );
   }
 }
+
+export default ChatClub;

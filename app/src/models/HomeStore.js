@@ -1,69 +1,14 @@
-import { resOk, getRes, _, observable, action, runInAction, processResult, R } from '@utils'
-import { getExample1, getExample2, getExample3 } from '@services/home'
-import ModelExtend from './ModelExtend'
-
-const {
-  forkJoin, map,
-  from, race, tap,
-} = R
-
-let i = 0
+import { observable } from '../utils';
+import ModelExtend from './ModelExtend';
 
 export default class Home extends ModelExtend {
   constructor(rootStore) {
-    super(rootStore)
+    super(rootStore);
   }
 
-  @observable todos = [
-    { name: '1' },
-    { name: '2' }
-  ]
+  @observable todos = [{ name: '1' }, { name: '2' }];
 
   @observable loading = {
-    getExample1: false
-  }
-
-  getExampleSync = () => {
-    forkJoin(getExample1(), getExample2())
-      .pipe(map(v => {
-        return v.map(item => processResult(item))
-      }))
-      .subscribe(([a, b]) => {
-        this.changeModel('todos', [
-          {
-            name: i++,
-          }
-        ])
-        return true
-      })
-  }
-
-  getExampleRace = () => {
-    from(getExample1())
-      .pipe(
-        race(from(getExample2())),
-        map(v => processResult(v)),
-        tap(v => console.log(v))
-      )
-      .subscribe(v => this.changeModel('todos', v))
-  }
-
-  getExample1 = async (v) => {
-    const data = getRes(await getExample1({ search: v }))
-    if (resOk(data)) {
-      this.changeModel('todos', [
-        {
-          name: v,
-        }
-      ])
-      return v
-    }
-  }
-
-  getExample2 = async () => {
-    const data = getRes(await getExample2())
-    if (resOk(data)) {
-      this.changeModel('todos', _.get(data, 'data'))
-    }
-  }
+    getExample1: false,
+  };
 }
