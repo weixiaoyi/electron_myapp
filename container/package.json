@@ -5,20 +5,31 @@
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
-    "start": "nodemon --watch ./src/**/* --exec electron . --debug",
+    "start": "electron . --debug",
+    "start:watch": "nodemon --watch ./src/**/* --exec electron . --debug",
     "pack": "electron-builder --dir",
     "dist": "rimraf dist&&electron-builder"
   },
   "keywords": [],
-  "author": "weixiaoyi",
+  "author": "myapp",
   "license": "MIT",
   "build": {
     "appId": "myapp",
+    "asarUnpack": [
+      "third-party/**/*"
+    ],
+    "files": [
+      "**/*",
+      "third-party/**/*"
+    ],
     "win": {
       "target": [
         "nsis",
         "zip"
       ]
+    },
+    "mac": {
+      "category": "finance"
     },
     "publish": [
       {

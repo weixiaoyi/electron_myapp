@@ -1,45 +1,49 @@
-const Window = require('./Window')
-const { app, } = require('electron')
-
+const Window = require("./Window");
+const { app, Menu } = require("electron");
 
 class App {
   constructor() {
-    this.app = app
-    this.init()
+    this.app = app;
+    this.init();
   }
 
   init() {
-
-    if (require('electron-squirrel-startup')) {
+    if (require("electron-squirrel-startup")) {
       this.app.quit();
     }
 
-    this.app.on('ready', () => {
-      this.createWindow()
+    this.app.on("ready", () => {
+      this.createWindow();
+      App.setMenuNull();
+      // tray.setToolTip("myapp");
     });
 
-    this.app.on('window-all-closed', () => {
-      if (process.platform !== 'darwin') {
+    this.app.on("window-all-closed", () => {
+      if (process.platform !== "darwin") {
         this.app.quit();
       }
     });
 
-    this.app.on('activate', () => {
+    this.app.on("activate", () => {
       if (this.window === null) {
-        this.createWindow()
+        this.createWindow();
       }
     });
+  }
+
+  static setMenuNull() {
+    Menu.setApplicationMenu(null);
   }
 
   createWindow() {
     this.window = new Window({
       width: 1600,
-      height: 900,
+      height: 2000,
       url: `http://localhost:8000/#/`,
-      //url: `file://${__dirname}/../distSource/index.html`
-    })
+      fullscreen: false,
+      resizable: false
+    });
   }
 }
 
-
-module.exports = App
+module.exports = App;
