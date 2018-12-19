@@ -22,6 +22,9 @@ class ChatClub extends Mixin.Custom {
       ipcRenderer.on('asynchronous-reply', (event, arg) => {
         console.log(arg, '=========================');
       });
+      ipcRenderer.on('show', (event, arg) => {
+        alert(arg);
+      });
       ipcRenderer.send('me', 'ping');
     }
   };

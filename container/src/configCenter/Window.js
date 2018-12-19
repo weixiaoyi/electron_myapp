@@ -1,12 +1,12 @@
 const { BrowserWindow } = require("electron");
 
 class Window {
-  constructor({ width, height, url, ...rest }) {
+  constructor(config = {}) {
     this.config = {
-      width,
-      height,
-      url,
-      ...rest
+      width: 800,
+      height: 600,
+      url: "",
+      ...config
     };
     this.init();
   }

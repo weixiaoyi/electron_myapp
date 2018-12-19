@@ -46,4 +46,4 @@ class App {
   }
 }
 
-module.exports = App;
+module.exports = new App();

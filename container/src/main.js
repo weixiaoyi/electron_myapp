@@ -1,5 +1,5 @@
-const App = require('./configCenter/App')
+require("./configCenter/App");
 
-require('./configCenter/Ipc')
+require("./configCenter/Ipc");
+require("./configCenter/Sql");
 
-new App()
