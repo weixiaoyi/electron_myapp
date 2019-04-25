@@ -26,6 +26,8 @@ class ChatClub extends Mixin.Custom {
         alert(arg);
       });
       ipcRenderer.send('me', 'ping');
+    } else {
+      console.log('window.require不存在');
     }
   };
 
@@ -69,10 +71,11 @@ class ChatClub extends Mixin.Custom {
             if (window.require) {
               const electron = window.require('electron');
               const { ipcRenderer } = electron;
+              console.log('hhhhh');
               ipcRenderer.send('update', '更新');
             }
           }}>
-          更新
+          更新fff
         </button>
         <div className={styles.chatClub}>{this.state.result ? this.state.result : '没有数据是啥'}</div>
         <div>

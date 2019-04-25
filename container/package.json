@@ -1,7 +1,7 @@
 {
   "name": "app",
   "productName": "app",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
@@ -31,7 +31,8 @@
       {
         "provider": "github",
         "owner": "weixiaoyi",
-        "repo": "https://github.com/weixiaoyi/electron_myapp.git"
+        "repo": "https://github.com/weixiaoyi/electron_myapp.git",
+        "releaseType":"release"
       }
     ]
   },
@@ -42,7 +43,7 @@
     "unzip": "^0.1.11"
   },
   "devDependencies": {
-    "electron": "^3.0.13",
+    "electron": "^5.0.0",
     "electron-builder": "^20.38.3",
     "nodemon": "^1.18.8",
     "rimraf": "^2.6.2"

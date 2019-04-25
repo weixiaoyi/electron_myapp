@@ -1,5 +1,6 @@
 const Window = require("./Window");
 const { app, Menu } = require("electron");
+const {checkUpdate}=require('./Ipc')
 
 class App {
   constructor() {
@@ -15,7 +16,7 @@ class App {
     this.app.on("ready", () => {
       this.createWindow();
       App.setMenuNull();
-      // tray.setToolTip("myapp");
+      setTimeout(()=>{checkUpdate()},2000)
     });
 
     this.app.on("window-all-closed", () => {
