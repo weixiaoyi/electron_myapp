@@ -1,7 +1,7 @@
 {
   "name": "app",
   "productName": "app",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/main.js",
   "scripts": {
@@ -15,12 +15,8 @@
   "license": "MIT",
   "build": {
     "appId": "myapp",
-    "asarUnpack": [
-      "third-party/**/*"
-    ],
     "files": [
-      "**/*",
-      "third-party/**/*"
+      "**/*"
     ],
     "win": {
       "target": [
@@ -33,8 +29,9 @@
     },
     "publish": [
       {
-        "provider": "generic",
-        "url": "http://localhost:7000/electron_update/"
+        "provider": "github",
+        "owner": "weixiaoyi",
+        "repo": "https://github.com/weixiaoyi/electron_myapp.git"
       }
     ]
   },

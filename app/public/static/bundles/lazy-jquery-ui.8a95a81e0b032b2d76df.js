@@ -2617,16 +2617,14 @@ webpackJsonp([8], {
                 (e = t.browser.msie && t.browser.version < 7),
                 (i = e ? 1 : 0),
                 (s = e ? 2 : -1),
-                this.helper
-                  .addClass(this._helper)
-                  .css({
-                    width: this.element.outerWidth() + s,
-                    height: this.element.outerHeight() + s,
-                    position: 'absolute',
-                    left: this.elementOffset.left - i + 'px',
-                    top: this.elementOffset.top - i + 'px',
-                    zIndex: ++o.zIndex,
-                  }),
+                this.helper.addClass(this._helper).css({
+                  width: this.element.outerWidth() + s,
+                  height: this.element.outerHeight() + s,
+                  position: 'absolute',
+                  left: this.elementOffset.left - i + 'px',
+                  top: this.elementOffset.top - i + 'px',
+                  zIndex: ++o.zIndex,
+                }),
                 this.helper.appendTo('body').disableSelection())
               : (this.helper = this.element);
         },

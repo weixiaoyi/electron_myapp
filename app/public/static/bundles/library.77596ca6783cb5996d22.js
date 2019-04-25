@@ -45115,14 +45115,12 @@ webpackJsonp(
             }),
             (t.prototype._init = function() {
               this._loadPosition(),
-                c
-                  .lazyJqueryUI(o(this._widget))
-                  .draggable({
-                    containment: 'window',
-                    drag: this._onDragEvent.bind(this),
-                    handle: '.js-drag',
-                    stop: this._savePosition.bind(this),
-                  }),
+                c.lazyJqueryUI(o(this._widget)).draggable({
+                  containment: 'window',
+                  drag: this._onDragEvent.bind(this),
+                  handle: '.js-drag',
+                  stop: this._savePosition.bind(this),
+                }),
                 this._options.allowSortable && this._initSortable(),
                 this._widget.addEventListener(Modernizr.touch ? 'touchstart' : 'mousedown', this.raise.bind(this));
             }),
@@ -79593,23 +79591,21 @@ webpackJsonp(
                 (c = o.centerCaption ? 'caption-big-center' : 'caption-big'),
                 s.modalDialog.find('._tv-dialog').css('width', a),
                 (h = o.customButtonCaption ? o.customButtonCaption : $.t('OK')),
-                s.modalDialog
-                  .find('._tv-dialog-content')
-                  .html(
-                    e.render(
-                      '<div class="main"><div class="{{captionClassName}} {{classSuffix}}">{{text}}' +
-                        r +
-                        '</div>{{^removeOkButton}}<div class="buttons"><input type="button" class="_tv-button ok" value="' +
-                        h +
-                        '"/></div>{{/removeOkButton}}</div>',
-                      {
-                        captionClassName: c,
-                        classSuffix: o.classSuffix || '',
-                        text: i,
-                        removeOkButton: o && o.removeOkButton,
-                      }
-                    )
-                  ),
+                s.modalDialog.find('._tv-dialog-content').html(
+                  e.render(
+                    '<div class="main"><div class="{{captionClassName}} {{classSuffix}}">{{text}}' +
+                      r +
+                      '</div>{{^removeOkButton}}<div class="buttons"><input type="button" class="_tv-button ok" value="' +
+                      h +
+                      '"/></div>{{/removeOkButton}}</div>',
+                    {
+                      captionClassName: c,
+                      classSuffix: o.classSuffix || '',
+                      text: i,
+                      removeOkButton: o && o.removeOkButton,
+                    }
+                  )
+                ),
                 s.modalDialog.find('._tv-button.ok').on('click', function() {
                   s.destroy(), o.onOkButtonClick && o.onOkButtonClick();
                 }),
